@@ -1,1 +1,307 @@
+<div id="u2-binary-widget">
+  <style>
+    #u2-binary-widget{
+      --u2-ink:#1f2933;
+      --u2-muted:#66727d;
+      --u2-line:#d9dee4;
+      --u2-soft:#f6f7f9;
+      --u2-good:#eaf6ec;
+      --u2-good-border:#2e7d32;
+      --u2-bad:#fdeeee;
+      --u2-bad-border:#c62828;
+      max-width:760px;
+      margin:16px auto;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--u2-ink);
+      line-height:1.35;
+    }
+
+    #u2-binary-widget *{box-sizing:border-box}
+
+    #u2-binary-widget .u2-card{
+      border:1px solid var(--u2-line);
+      border-radius:10px;
+      overflow:hidden;
+      background:#fff;
+    }
+
+    #u2-binary-widget .u2-head{
+      padding:12px 14px 10px;
+      background:var(--u2-soft);
+      border-bottom:1px solid var(--u2-line);
+    }
+
+    #u2-binary-widget h3{
+      margin:0 0 3px;
+      font-size:1.12rem;
+    }
+
+    #u2-binary-widget .u2-sub{
+      margin:0;
+      color:var(--u2-muted);
+      font-size:.88rem;
+    }
+
+    #u2-binary-widget .u2-content{
+      padding:10px 12px 12px;
+    }
+
+    #u2-binary-widget .u2-section-title{
+      margin:10px 0 6px;
+      font-size:.9rem;
+      font-weight:700;
+      color:#3b4650;
+    }
+
+    #u2-binary-widget .u2-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:7px;
+    }
+
+    #u2-binary-widget .u2-question{
+      border:1px solid var(--u2-line);
+      border-radius:7px;
+      padding:8px 9px;
+    }
+
+    #u2-binary-widget .u2-question.u2-correct{
+      background:var(--u2-good);
+      border-color:var(--u2-good-border);
+    }
+
+    #u2-binary-widget .u2-question.u2-incorrect{
+      background:var(--u2-bad);
+      border-color:var(--u2-bad-border);
+    }
+
+    #u2-binary-widget .u2-qline{
+      display:flex;
+      gap:7px;
+      align-items:center;
+    }
+
+    #u2-binary-widget .u2-num{
+      font-weight:700;
+      min-width:1.4rem;
+      font-size:.88rem;
+    }
+
+    #u2-binary-widget .u2-prompt{
+      flex:1;
+      font-size:.9rem;
+      min-width:0;
+    }
+
+    #u2-binary-widget input{
+      width:110px;
+      max-width:40%;
+      padding:5px 6px;
+      border:1px solid #aab3bd;
+      border-radius:5px;
+      font-size:.9rem;
+      text-align:center;
+      font-family:"Courier New", monospace;
+      background:#fff;
+      color:var(--u2-ink);
+    }
+
+    #u2-binary-widget .u2-feedback{
+      display:none;
+      margin:5px 0 0 2.1rem;
+      font-size:.78rem;
+      font-weight:700;
+    }
+
+    #u2-binary-widget .u2-question.u2-correct .u2-feedback,
+    #u2-binary-widget .u2-question.u2-incorrect .u2-feedback{
+      display:block;
+    }
+
+    #u2-binary-widget .u2-correct .u2-feedback{color:#1b5e20}
+    #u2-binary-widget .u2-incorrect .u2-feedback{color:#8e0000}
+
+    #u2-binary-widget .u2-actions{
+      display:flex;
+      gap:8px;
+      align-items:center;
+      margin-top:10px;
+      flex-wrap:wrap;
+    }
+
+    #u2-binary-widget button{
+      border:0;
+      border-radius:6px;
+      padding:7px 11px;
+      font-size:.88rem;
+      font-weight:700;
+      cursor:pointer;
+    }
+
+    #u2-binary-widget .u2-submit{
+      background:#1f2933;
+      color:#fff;
+    }
+
+    #u2-binary-widget .u2-retry{
+      background:#e8ebef;
+      color:#1f2933;
+      display:none;
+    }
+
+    #u2-binary-widget .u2-results{
+      display:none;
+      margin-left:auto;
+      font-size:.9rem;
+      font-weight:700;
+    }
+
+    #u2-binary-widget .u2-tip{
+      margin:8px 0 0;
+      color:var(--u2-muted);
+      font-size:.8rem;
+    }
+
+    @media (max-width:520px){
+      #u2-binary-widget .u2-qline{align-items:flex-start; flex-wrap:wrap}
+      #u2-binary-widget input{max-width:none; width:100%; margin-left:2.1rem}
+      #u2-binary-widget .u2-results{margin-left:0; width:100%}
+    }
+  </style>
+
+  <div class="u2-card">
+    <div class="u2-head">
+      <h3>Binary ↔ Decimal Quick Check</h3>
+      <p class="u2-sub">Unit 2: Fundamentals of Computer Systems</p>
+    </div>
+
+    <div class="u2-content">
+      <form class="u2-form" autocomplete="off">
+        <div class="u2-section-title">Decimal → 8-bit binary</div>
+        <div class="u2-grid">
+          <div class="u2-question" data-answer="00000101">
+            <div class="u2-qline"><span class="u2-num">1.</span><span class="u2-prompt"><strong>5</strong> →</span><input type="text" maxlength="8" inputmode="numeric" aria-label="Question 1"></div>
+            <div class="u2-feedback"></div>
+          </div>
+          <div class="u2-question" data-answer="00001100">
+            <div class="u2-qline"><span class="u2-num">2.</span><span class="u2-prompt"><strong>12</strong> →</span><input type="text" maxlength="8" inputmode="numeric" aria-label="Question 2"></div>
+            <div class="u2-feedback"></div>
+          </div>
+          <div class="u2-question" data-answer="00011001">
+            <div class="u2-qline"><span class="u2-num">3.</span><span class="u2-prompt"><strong>25</strong> →</span><input type="text" maxlength="8" inputmode="numeric" aria-label="Question 3"></div>
+            <div class="u2-feedback"></div>
+          </div>
+          <div class="u2-question" data-answer="00100110">
+            <div class="u2-qline"><span class="u2-num">4.</span><span class="u2-prompt"><strong>38</strong> →</span><input type="text" maxlength="8" inputmode="numeric" aria-label="Question 4"></div>
+            <div class="u2-feedback"></div>
+          </div>
+          <div class="u2-question" data-answer="00111001">
+            <div class="u2-qline"><span class="u2-num">5.</span><span class="u2-prompt"><strong>57</strong> →</span><input type="text" maxlength="8" inputmode="numeric" aria-label="Question 5"></div>
+            <div class="u2-feedback"></div>
+          </div>
+          <div class="u2-question" data-answer="01010100">
+            <div class="u2-qline"><span class="u2-num">6.</span><span class="u2-prompt"><strong>84</strong> →</span><input type="text" maxlength="8" inputmode="numeric" aria-label="Question 6"></div>
+            <div class="u2-feedback"></div>
+          </div>
+        </div>
+
+        <div class="u2-section-title">8-bit binary → decimal</div>
+        <div class="u2-grid">
+          <div class="u2-question" data-answer="3">
+            <div class="u2-qline"><span class="u2-num">7.</span><span class="u2-prompt"><strong>00000011</strong> →</span><input type="number" min="0" max="255" aria-label="Question 7"></div>
+            <div class="u2-feedback"></div>
+          </div>
+          <div class="u2-question" data-answer="13">
+            <div class="u2-qline"><span class="u2-num">8.</span><span class="u2-prompt"><strong>00001101</strong> →</span><input type="number" min="0" max="255" aria-label="Question 8"></div>
+            <div class="u2-feedback"></div>
+          </div>
+          <div class="u2-question" data-answer="45">
+            <div class="u2-qline"><span class="u2-num">9.</span><span class="u2-prompt"><strong>00101101</strong> →</span><input type="number" min="0" max="255" aria-label="Question 9"></div>
+            <div class="u2-feedback"></div>
+          </div>
+          <div class="u2-question" data-answer="74">
+            <div class="u2-qline"><span class="u2-num">10.</span><span class="u2-prompt"><strong>01001010</strong> →</span><input type="number" min="0" max="255" aria-label="Question 10"></div>
+            <div class="u2-feedback"></div>
+          </div>
+          <div class="u2-question" data-answer="170">
+            <div class="u2-qline"><span class="u2-num">11.</span><span class="u2-prompt"><strong>10101010</strong> →</span><input type="number" min="0" max="255" aria-label="Question 11"></div>
+            <div class="u2-feedback"></div>
+          </div>
+          <div class="u2-question" data-answer="241">
+            <div class="u2-qline"><span class="u2-num">12.</span><span class="u2-prompt"><strong>11110001</strong> →</span><input type="number" min="0" max="255" aria-label="Question 12"></div>
+            <div class="u2-feedback"></div>
+          </div>
+        </div>
+
+        <div class="u2-actions">
+          <button type="submit" class="u2-submit">Check answers</button>
+          <button type="button" class="u2-retry">Try again</button>
+          <div class="u2-results" aria-live="polite"></div>
+        </div>
+
+        <p class="u2-tip"><strong>Remember:</strong> 8-bit place values are 128, 64, 32, 16, 8, 4, 2, 1.</p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const root = document.getElementById('u2-binary-widget');
+      if (!root || root.dataset.ready === '1') return;
+      root.dataset.ready = '1';
+
+      const form = root.querySelector('.u2-form');
+      const questions = [...root.querySelectorAll('.u2-question')];
+      const submitBtn = root.querySelector('.u2-submit');
+      const retryBtn = root.querySelector('.u2-retry');
+      const results = root.querySelector('.u2-results');
+      const clean = value => String(value).trim().replace(/\s+/g,'');
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        let score = 0;
+
+        questions.forEach(function(q){
+          const input = q.querySelector('input');
+          const feedback = q.querySelector('.u2-feedback');
+          const correct = clean(q.dataset.answer);
+          const learner = clean(input.value);
+
+          q.classList.remove('u2-correct','u2-incorrect');
+
+          if (learner === correct) {
+            score++;
+            q.classList.add('u2-correct');
+            feedback.textContent = '✓ Correct';
+          } else {
+            q.classList.add('u2-incorrect');
+            feedback.innerHTML = '✗ Correct answer: <span style="font-family:Courier New,monospace">' + correct + '</span>';
+          }
+
+          input.disabled = true;
+        });
+
+        const percent = Math.round((score / questions.length) * 100);
+        results.textContent = 'Score: ' + score + '/' + questions.length + ' (' + percent + '%)';
+        results.style.display = 'block';
+        submitBtn.style.display = 'none';
+        retryBtn.style.display = 'inline-block';
+      });
+
+      retryBtn.addEventListener('click', function(){
+        form.reset();
+
+        questions.forEach(function(q){
+          q.classList.remove('u2-correct','u2-incorrect');
+          q.querySelector('.u2-feedback').textContent = '';
+          q.querySelector('input').disabled = false;
+        });
+
+        results.style.display = 'none';
+        submitBtn.style.display = 'inline-block';
+        retryBtn.style.display = 'none';
+      });
+    })();
+  </script>
+</div>
 
