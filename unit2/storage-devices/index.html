@@ -1,1 +1,411 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unit 2 Storage Devices Quick Check</title>
+<style>
+:root{
+  --ink:#1f2933; --muted:#66727d; --line:#d9dee4; --soft:#f6f7f9;
+  --good:#eaf6ec; --good-border:#2e7d32; --bad:#fdeeee; --bad-border:#c62828;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:#fff;line-height:1.4}
+.widget{max-width:780px;margin:0 auto;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+.head{padding:12px 14px 10px;background:var(--soft);border-bottom:1px solid var(--line)}
+h2{margin:0 0 3px;font-size:1.15rem}.sub{margin:0;color:var(--muted);font-size:.88rem}
+.content{padding:10px 12px 12px}.intro{margin:0 0 10px;color:var(--muted);font-size:.86rem}
+.section-title{margin:14px 0 6px;font-size:.92rem;font-weight:700;color:#3b4650;border-bottom:1px solid var(--line);padding-bottom:5px}
+.question{border:1px solid var(--line);border-radius:7px;padding:9px 10px;margin:7px 0;background:#fff}
+.question.correct{background:var(--good);border-color:var(--good-border)}
+.question.incorrect{background:var(--bad);border-color:var(--bad-border)}
+.qrow{display:flex;gap:8px;align-items:flex-start}.num{min-width:1.7rem;font-weight:700;font-size:.88rem;padding-top:2px}
+.prompt{flex:1;font-size:.9rem}
+.answer-row{margin:8px 0 0 2.1rem;display:flex;gap:8px 12px;align-items:center;flex-wrap:wrap}
+.answer-group{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.answer-label{font-size:.8rem;color:var(--muted);font-weight:700}
+input,select{padding:6px 8px;border:1px solid #aab3bd;border-radius:5px;font-size:.9rem;font-family:inherit;background:#fff;color:var(--ink)}
+input{width:235px;max-width:100%}select{min-width:135px}
+.feedback{display:none;margin:6px 0 0 2.1rem;font-size:.78rem;font-weight:700}
+.question.correct .feedback,.question.incorrect .feedback{display:block}
+.correct .feedback{color:#1b5e20}.incorrect .feedback{color:#8e0000}
+.actions{display:flex;gap:8px;align-items:center;margin-top:12px;flex-wrap:wrap}
+button{border:0;border-radius:6px;padding:7px 11px;font-size:.88rem;font-weight:700;cursor:pointer}
+#checkBtn{background:#1f2933;color:#fff}#retryBtn,#resetBtn{background:#e8ebef;color:#1f2933}#retryBtn{display:none}
+.tip{margin:9px 0 0;color:var(--muted);font-size:.8rem}
+@media(max-width:560px){.answer-row{margin-left:0}.answer-group{width:100%}input,select{width:100%}.feedback{margin-left:0}}
+</style>
+</head>
+<body>
+<div class="widget">
+  <div class="head">
+    <h2>Storage Devices: Quick Check</h2>
+    <p class="sub">Unit 2: Fundamentals of Computer Systems</p>
+  </div>
 
+  <div class="content">
+    <p class="intro">
+      Identify the storage device from each description and decide whether it is normally <strong>internal</strong> or <strong>external</strong>.
+      Then complete the storage terminology gaps. Incorrect answers are not revealed — use <strong>Try again</strong> and keep working until you get them right.
+    </p>
+
+    <form id="storageForm" autocomplete="off">
+      <div class="section-title">Part A — What am I?</div>
+
+      <div class="question device-question" data-location="internal">
+        <div class="qrow">
+          <span class="num">1.</span>
+          <div class="prompt">A storage device fitted inside a computer that stores the operating system, applications and user files using magnetic platters.</div>
+        </div>
+        <div class="answer-row">
+          <div class="answer-group">
+            <span class="answer-label">Device:</span>
+            <input type="text" data-answers="hard disk drive|hard drive|hdd" aria-label="Question 1 device">
+          </div>
+          <div class="answer-group">
+            <span class="answer-label">Usually:</span>
+            <select aria-label="Question 1 internal or external">
+              <option value="">Choose…</option>
+              <option value="internal">Internal</option>
+              <option value="external">External</option>
+            </select>
+          </div>
+        </div>
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question device-question" data-location="internal">
+        <div class="qrow">
+          <span class="num">2.</span>
+          <div class="prompt">A fast internal storage device with no moving parts that stores data using flash memory.</div>
+        </div>
+        <div class="answer-row">
+          <div class="answer-group">
+            <span class="answer-label">Device:</span>
+            <input type="text" data-answers="solid state drive|ssd|solid-state drive" aria-label="Question 2 device">
+          </div>
+          <div class="answer-group">
+            <span class="answer-label">Usually:</span>
+            <select aria-label="Question 2 internal or external">
+              <option value="">Choose…</option>
+              <option value="internal">Internal</option>
+              <option value="external">External</option>
+            </select>
+          </div>
+        </div>
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question device-question" data-location="internal">
+        <div class="qrow">
+          <span class="num">3.</span>
+          <div class="prompt">A small solid-state storage device that fits directly onto the motherboard, often using an M.2 connector.</div>
+        </div>
+        <div class="answer-row">
+          <div class="answer-group">
+            <span class="answer-label">Device:</span>
+            <input type="text" data-answers="m.2 ssd|m2 ssd|m.2 drive|m2 drive|nvme ssd|nvme drive" aria-label="Question 3 device">
+          </div>
+          <div class="answer-group">
+            <span class="answer-label">Usually:</span>
+            <select aria-label="Question 3 internal or external">
+              <option value="">Choose…</option>
+              <option value="internal">Internal</option>
+              <option value="external">External</option>
+            </select>
+          </div>
+        </div>
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question device-question" data-location="external">
+        <div class="qrow">
+          <span class="num">4.</span>
+          <div class="prompt">A removable storage device that plugs into a USB port and uses flash memory.</div>
+        </div>
+        <div class="answer-row">
+          <div class="answer-group">
+            <span class="answer-label">Device:</span>
+            <input type="text" data-answers="usb flash drive|usb drive|flash drive|memory stick|usb memory stick" aria-label="Question 4 device">
+          </div>
+          <div class="answer-group">
+            <span class="answer-label">Usually:</span>
+            <select aria-label="Question 4 internal or external">
+              <option value="">Choose…</option>
+              <option value="internal">Internal</option>
+              <option value="external">External</option>
+            </select>
+          </div>
+        </div>
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question device-question" data-location="external">
+        <div class="qrow">
+          <span class="num">5.</span>
+          <div class="prompt">A portable storage device containing a hard disk that connects to a computer, commonly by USB.</div>
+        </div>
+        <div class="answer-row">
+          <div class="answer-group">
+            <span class="answer-label">Device:</span>
+            <input type="text" data-answers="external hard drive|external hard disk|external hdd|portable hard drive" aria-label="Question 5 device">
+          </div>
+          <div class="answer-group">
+            <span class="answer-label">Usually:</span>
+            <select aria-label="Question 5 internal or external">
+              <option value="">Choose…</option>
+              <option value="internal">Internal</option>
+              <option value="external">External</option>
+            </select>
+          </div>
+        </div>
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question device-question" data-location="external">
+        <div class="qrow">
+          <span class="num">6.</span>
+          <div class="prompt">A small removable flash-memory card commonly used in cameras, phones and other portable devices.</div>
+        </div>
+        <div class="answer-row">
+          <div class="answer-group">
+            <span class="answer-label">Device:</span>
+            <input type="text" data-answers="sd card|secure digital card" aria-label="Question 6 device">
+          </div>
+          <div class="answer-group">
+            <span class="answer-label">Usually:</span>
+            <select aria-label="Question 6 internal or external">
+              <option value="">Choose…</option>
+              <option value="internal">Internal</option>
+              <option value="external">External</option>
+            </select>
+          </div>
+        </div>
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question device-question" data-location="external">
+        <div class="qrow">
+          <span class="num">7.</span>
+          <div class="prompt">A very small removable memory card commonly used in smartphones, action cameras and handheld devices.</div>
+        </div>
+        <div class="answer-row">
+          <div class="answer-group">
+            <span class="answer-label">Device:</span>
+            <input type="text" data-answers="micro sd card|microsd card|micro-sd card|micro sd" aria-label="Question 7 device">
+          </div>
+          <div class="answer-group">
+            <span class="answer-label">Usually:</span>
+            <select aria-label="Question 7 internal or external">
+              <option value="">Choose…</option>
+              <option value="internal">Internal</option>
+              <option value="external">External</option>
+            </select>
+          </div>
+        </div>
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question device-question" data-location="external">
+        <div class="qrow">
+          <span class="num">8.</span>
+          <div class="prompt">A removable optical disc that can store substantially more data than a CD and is commonly used for films, software or backups.</div>
+        </div>
+        <div class="answer-row">
+          <div class="answer-group">
+            <span class="answer-label">Device:</span>
+            <input type="text" data-answers="dvd|digital versatile disc|digital video disc" aria-label="Question 8 device">
+          </div>
+          <div class="answer-group">
+            <span class="answer-label">Usually:</span>
+            <select aria-label="Question 8 internal or external">
+              <option value="">Choose…</option>
+              <option value="internal">Internal</option>
+              <option value="external">External</option>
+            </select>
+          </div>
+        </div>
+        <div class="feedback"></div>
+      </div>
+
+      <div class="section-title">Part B — Fill in the gaps</div>
+
+      <div class="question gap-question">
+        <div class="qrow">
+          <span class="num">9.</span>
+          <div class="prompt">An HDD stores data magnetically on spinning <input type="text" data-answers="platters|disks|discs" aria-label="Question 9 answer">.</div>
+        </div>
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question gap-question">
+        <div class="qrow">
+          <span class="num">10.</span>
+          <div class="prompt">An SSD has no moving parts and normally uses <input type="text" data-answers="flash|nand|nand flash" aria-label="Question 10 answer"> memory.</div>
+        </div>
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question gap-question">
+        <div class="qrow">
+          <span class="num">11.</span>
+          <div class="prompt">A USB flash drive is useful for moving files because it is small and <input type="text" data-answers="portable|removable" aria-label="Question 11 answer">.</div>
+        </div>
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question gap-question">
+        <div class="qrow">
+          <span class="num">12.</span>
+          <div class="prompt">Internal storage is normally installed <input type="text" data-answers="inside|within" aria-label="Question 12 answer"> the computer case.</div>
+        </div>
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question gap-question">
+        <div class="qrow">
+          <span class="num">13.</span>
+          <div class="prompt">External storage is usually connected when needed using a port such as <input type="text" data-answers="usb|usb-c|usb c" aria-label="Question 13 answer">.</div>
+        </div>
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question gap-question">
+        <div class="qrow">
+          <span class="num">14.</span>
+          <div class="prompt">Optical discs are read using a laser in an optical <input type="text" data-answers="drive|disc drive|disk drive" aria-label="Question 14 answer">.</div>
+        </div>
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question gap-question">
+        <div class="qrow">
+          <span class="num">15.</span>
+          <div class="prompt">A storage device's <input type="text" data-answers="capacity|storage capacity" aria-label="Question 15 answer"> describes how much data it can hold.</div>
+        </div>
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question gap-question">
+        <div class="qrow">
+          <span class="num">16.</span>
+          <div class="prompt">SSDs are usually faster than HDDs because they do not need to move a mechanical read/write <input type="text" data-answers="head|heads" aria-label="Question 16 answer">.</div>
+        </div>
+        <div class="feedback"></div>
+      </div>
+
+      <div class="actions">
+        <button type="submit" id="checkBtn">Check answers</button>
+        <button type="button" id="retryBtn">Try again</button>
+        <button type="button" id="resetBtn">Reset</button>
+      </div>
+
+      <p class="tip"><strong>Tip:</strong> Think about where the device is normally fitted or connected, how it stores data, and what makes it suitable for different uses.</p>
+    </form>
+  </div>
+</div>
+
+<script>
+const form=document.getElementById('storageForm');
+const questions=[...document.querySelectorAll('.question')];
+const checkBtn=document.getElementById('checkBtn');
+const retryBtn=document.getElementById('retryBtn');
+const resetBtn=document.getElementById('resetBtn');
+
+function clean(v){
+  return String(v).trim().toLowerCase().replace(/[.,!?;:]+$/g,'').replace(/\s+/g,' ');
+}
+
+function textCorrect(input){
+  const learner=clean(input.value);
+  const answers=input.dataset.answers.split('|').map(clean);
+  return learner!=='' && answers.includes(learner);
+}
+
+form.addEventListener('submit',e=>{
+  e.preventDefault();
+  let hasIncorrect=false;
+
+  questions.forEach(q=>{
+    const input=q.querySelector('input');
+    const feedback=q.querySelector('.feedback');
+    q.classList.remove('correct','incorrect');
+
+    let ok=false;
+
+    if(q.classList.contains('device-question')){
+      const select=q.querySelector('select');
+      const nameOK=textCorrect(input);
+      const locationOK=select.value===q.dataset.location;
+      ok=nameOK && locationOK;
+
+      if(ok){
+        feedback.textContent='✓ Correct';
+        input.disabled=true;
+        select.disabled=true;
+      }else{
+        if(!nameOK && !locationOK){
+          feedback.textContent='✗ Not quite — check both the device and whether it is internal or external';
+        }else if(!nameOK){
+          feedback.textContent='✗ Device not quite right — try again';
+        }else{
+          feedback.textContent='✗ Device is right, but check whether it is normally internal or external';
+        }
+        input.disabled=false;
+        select.disabled=false;
+      }
+    }else{
+      ok=textCorrect(input);
+      if(ok){
+        feedback.textContent='✓ Correct';
+        input.disabled=true;
+      }else{
+        feedback.textContent=input.value.trim()==='' ? '✗ Enter an answer and try again' : '✗ Not quite — try again';
+        input.disabled=false;
+      }
+    }
+
+    q.classList.add(ok?'correct':'incorrect');
+    if(!ok) hasIncorrect=true;
+  });
+
+  checkBtn.style.display='none';
+  retryBtn.style.display=hasIncorrect?'inline-block':'none';
+});
+
+retryBtn.addEventListener('click',()=>{
+  questions.forEach(q=>{
+    if(q.classList.contains('incorrect')){
+      q.classList.remove('incorrect');
+      q.querySelector('.feedback').textContent='';
+      q.querySelector('input').disabled=false;
+      const select=q.querySelector('select');
+      if(select) select.disabled=false;
+    }
+  });
+
+  retryBtn.style.display='none';
+  checkBtn.style.display='inline-block';
+
+  const first=questions.find(q=>!q.classList.contains('correct'));
+  if(first) first.querySelector('input').focus();
+});
+
+resetBtn.addEventListener('click',()=>{
+  form.reset();
+
+  questions.forEach(q=>{
+    q.classList.remove('correct','incorrect');
+    q.querySelector('.feedback').textContent='';
+    q.querySelector('input').disabled=false;
+    const select=q.querySelector('select');
+    if(select) select.disabled=false;
+  });
+
+  retryBtn.style.display='none';
+  checkBtn.style.display='inline-block';
+  questions[0].querySelector('input').focus();
+});
+</script>
+</body>
+</html>
