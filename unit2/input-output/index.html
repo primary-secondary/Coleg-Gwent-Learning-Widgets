@@ -1,1 +1,868 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unit 2 Input and Output Devices</title>
+<style>
+:root{
+  --ink:#1f2933;
+  --muted:#66727d;
+  --line:#d9dee4;
+  --soft:#f5f7f9;
+  --good:#eaf6ec;
+  --good-border:#2e7d32;
+  --bad:#fdeeee;
+  --bad-border:#c62828;
+  --accent:#303b46;
+}
+*{box-sizing:border-box}
 
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--ink);
+  background:#f4f6f8;
+  line-height:1.5;
+}
+
+.page{
+  max-width:980px;
+  margin:0 auto;
+  background:#fff;
+  min-height:100vh;
+  padding:42px 44px 56px;
+  box-shadow:0 0 0 1px #e7ebef;
+}
+
+.hero{
+  margin-bottom:28px;
+}
+
+.eyebrow{
+  margin:0 0 6px;
+  color:var(--muted);
+  font-size:.92rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+
+h1{
+  margin:0 0 8px;
+  font-size:2rem;
+  line-height:1.15;
+}
+
+.lead{
+  margin:0;
+  max-width:760px;
+  color:var(--muted);
+  font-size:1rem;
+}
+
+.instructions{
+  margin:24px 0 30px;
+  padding:16px 18px;
+  background:var(--soft);
+  border-left:5px solid var(--accent);
+  border-radius:0 8px 8px 0;
+}
+
+.instructions p{
+  margin:0 0 8px;
+}
+
+.instructions p:last-child{
+  margin-bottom:0;
+}
+
+.section{
+  margin-top:34px;
+}
+
+.section-head{
+  margin-bottom:14px;
+  padding-bottom:10px;
+  border-bottom:2px solid var(--line);
+}
+
+.section-kicker{
+  margin:0 0 2px;
+  color:var(--muted);
+  font-size:.82rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+
+.section h2{
+  margin:0 0 4px;
+  font-size:1.3rem;
+}
+
+.section-desc{
+  margin:0;
+  color:var(--muted);
+  font-size:.92rem;
+}
+
+.question{
+  border:1px solid var(--line);
+  border-radius:9px;
+  padding:16px 17px;
+  margin:12px 0;
+  background:#fff;
+}
+
+.question.correct{
+  background:var(--good);
+  border-color:var(--good-border);
+}
+
+.question.incorrect{
+  background:var(--bad);
+  border-color:var(--bad-border);
+}
+
+.qtop{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+}
+
+.num{
+  min-width:2rem;
+  font-weight:700;
+  color:#3b4650;
+}
+
+.definition{
+  flex:1;
+  font-size:.98rem;
+}
+
+.answer-row{
+  margin:12px 0 0 2.55rem;
+  display:grid;
+  grid-template-columns:minmax(260px,1fr) 220px;
+  gap:12px;
+}
+
+.answer-group{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+
+.answer-label{
+  color:var(--muted);
+  font-size:.8rem;
+  font-weight:700;
+}
+
+input,select{
+  width:100%;
+  padding:9px 10px;
+  border:1px solid #aab3bd;
+  border-radius:6px;
+  font:inherit;
+  background:#fff;
+  color:var(--ink);
+}
+
+input:focus,select:focus{
+  outline:3px solid rgba(48,59,70,.12);
+  border-color:#66727d;
+}
+
+.feedback{
+  display:none;
+  margin:8px 0 0 2.55rem;
+  font-size:.84rem;
+  font-weight:700;
+}
+
+.question.correct .feedback,
+.question.incorrect .feedback{
+  display:block;
+}
+
+.correct .feedback{color:#1b5e20}
+.incorrect .feedback{color:#8e0000}
+
+.actions{
+  margin-top:34px;
+  padding-top:20px;
+  border-top:2px solid var(--line);
+  display:flex;
+  gap:10px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+button{
+  border:0;
+  border-radius:7px;
+  padding:10px 15px;
+  font-size:.92rem;
+  font-weight:700;
+  cursor:pointer;
+}
+
+#checkBtn{
+  background:#1f2933;
+  color:#fff;
+}
+
+#retryBtn,#resetBtn{
+  background:#e8ebef;
+  color:#1f2933;
+}
+
+#retryBtn{display:none}
+
+#completeMsg{
+  display:none;
+  margin-left:auto;
+  font-weight:700;
+  color:#1b5e20;
+}
+
+.footer-note{
+  margin-top:12px;
+  color:var(--muted);
+  font-size:.84rem;
+}
+
+@media(max-width:720px){
+  .page{padding:26px 18px 36px}
+  h1{font-size:1.65rem}
+  .answer-row{
+    margin-left:0;
+    grid-template-columns:1fr;
+  }
+  .feedback{margin-left:0}
+  #completeMsg{width:100%;margin-left:0}
+}
+</style>
+</head>
+<body>
+<main class="page">
+  <header class="hero">
+    <p class="eyebrow">Unit 2: Fundamentals of Computer Systems</p>
+    <h1>Input, Output & Multifunction Devices</h1>
+    <p class="lead">
+      Read each description, identify the device, and decide whether it is an input, output or multifunction device.
+    </p>
+  </header>
+
+  <section class="instructions">
+    <p><strong>How to use this activity:</strong> complete both parts of each question, then select <strong>Check answers</strong>.</p>
+    <p>Correct answers will lock in. Incorrect answers will not be revealed, so use <strong>Try again</strong> and keep working until you get them right.</p>
+    <p><strong>Remember:</strong> input devices send data into a computer system; output devices present information from it; multifunction devices do both.</p>
+  </section>
+
+  <form id="deviceForm" autocomplete="off">
+
+    <section class="section">
+      <div class="section-head">
+        <p class="section-kicker">Part A</p>
+        <h2>Core devices</h2>
+        <p class="section-desc">Start with familiar devices and identify both the device and its role.</p>
+      </div>
+
+      <div class="question" data-type="input">
+        <div class="qtop">
+          <span class="num">1.</span>
+          <div class="definition">A device used to enter letters, numbers and commands by pressing keys.</div>
+        </div>
+
+        <div class="answer-row">
+          <div class="answer-group">
+            <label class="answer-label" for="device-1">Device</label>
+            <input id="device-1" type="text" data-answers="keyboard" aria-label="Question 1 device">
+          </div>
+
+          <div class="answer-group">
+            <label class="answer-label" for="type-1">Device type</label>
+            <select id="type-1" aria-label="Question 1 type">
+              <option value="">Choose…</option>
+              <option value="input">Input</option>
+              <option value="output">Output</option>
+              <option value="multifunction">Multifunction</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question" data-type="input">
+        <div class="qtop">
+          <span class="num">2.</span>
+          <div class="definition">A pointing device moved by hand to control a pointer and select items on screen.</div>
+        </div>
+
+        <div class="answer-row">
+          <div class="answer-group">
+            <label class="answer-label" for="device-2">Device</label>
+            <input id="device-2" type="text" data-answers="mouse" aria-label="Question 2 device">
+          </div>
+
+          <div class="answer-group">
+            <label class="answer-label" for="type-2">Device type</label>
+            <select id="type-2" aria-label="Question 2 type">
+              <option value="">Choose…</option>
+              <option value="input">Input</option>
+              <option value="output">Output</option>
+              <option value="multifunction">Multifunction</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question" data-type="output">
+        <div class="qtop">
+          <span class="num">3.</span>
+          <div class="definition">A screen that displays text, images and video produced by the computer.</div>
+        </div>
+
+        <div class="answer-row">
+          <div class="answer-group">
+            <label class="answer-label" for="device-3">Device</label>
+            <input id="device-3" type="text" data-answers="monitor|screen|display" aria-label="Question 3 device">
+          </div>
+
+          <div class="answer-group">
+            <label class="answer-label" for="type-3">Device type</label>
+            <select id="type-3" aria-label="Question 3 type">
+              <option value="">Choose…</option>
+              <option value="input">Input</option>
+              <option value="output">Output</option>
+              <option value="multifunction">Multifunction</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question" data-type="input">
+        <div class="qtop">
+          <span class="num">4.</span>
+          <div class="definition">A device that records sound and converts it into digital data.</div>
+        </div>
+
+        <div class="answer-row">
+          <div class="answer-group">
+            <label class="answer-label" for="device-4">Device</label>
+            <input id="device-4" type="text" data-answers="microphone|mic" aria-label="Question 4 device">
+          </div>
+
+          <div class="answer-group">
+            <label class="answer-label" for="type-4">Device type</label>
+            <select id="type-4" aria-label="Question 4 type">
+              <option value="">Choose…</option>
+              <option value="input">Input</option>
+              <option value="output">Output</option>
+              <option value="multifunction">Multifunction</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question" data-type="output">
+        <div class="qtop">
+          <span class="num">5.</span>
+          <div class="definition">A device that produces a permanent paper copy of digital documents or images.</div>
+        </div>
+
+        <div class="answer-row">
+          <div class="answer-group">
+            <label class="answer-label" for="device-5">Device</label>
+            <input id="device-5" type="text" data-answers="printer" aria-label="Question 5 device">
+          </div>
+
+          <div class="answer-group">
+            <label class="answer-label" for="type-5">Device type</label>
+            <select id="type-5" aria-label="Question 5 type">
+              <option value="">Choose…</option>
+              <option value="input">Input</option>
+              <option value="output">Output</option>
+              <option value="multifunction">Multifunction</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question" data-type="output">
+        <div class="qtop">
+          <span class="num">6.</span>
+          <div class="definition">A device that converts digital audio signals into sound that can be heard.</div>
+        </div>
+
+        <div class="answer-row">
+          <div class="answer-group">
+            <label class="answer-label" for="device-6">Device</label>
+            <input id="device-6" type="text" data-answers="speaker|speakers" aria-label="Question 6 device">
+          </div>
+
+          <div class="answer-group">
+            <label class="answer-label" for="type-6">Device type</label>
+            <select id="type-6" aria-label="Question 6 type">
+              <option value="">Choose…</option>
+              <option value="input">Input</option>
+              <option value="output">Output</option>
+              <option value="multifunction">Multifunction</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="feedback"></div>
+      </div>
+</section>
+    <section class="section">
+      <div class="section-head">
+        <p class="section-kicker">Part B</p>
+        <h2>Specialist devices</h2>
+        <p class="section-desc">These are still common in computer systems, but some are used for more specific tasks.</p>
+      </div>
+
+      <div class="question" data-type="input">
+        <div class="qtop">
+          <span class="num">7.</span>
+          <div class="definition">A device that captures a paper document or photograph and converts it into a digital image.</div>
+        </div>
+
+        <div class="answer-row">
+          <div class="answer-group">
+            <label class="answer-label" for="device-7">Device</label>
+            <input id="device-7" type="text" data-answers="scanner|flatbed scanner" aria-label="Question 7 device">
+          </div>
+
+          <div class="answer-group">
+            <label class="answer-label" for="type-7">Device type</label>
+            <select id="type-7" aria-label="Question 7 type">
+              <option value="">Choose…</option>
+              <option value="input">Input</option>
+              <option value="output">Output</option>
+              <option value="multifunction">Multifunction</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question" data-type="input">
+        <div class="qtop">
+          <span class="num">8.</span>
+          <div class="definition">A device used to read printed barcodes and send the code into a computer system.</div>
+        </div>
+
+        <div class="answer-row">
+          <div class="answer-group">
+            <label class="answer-label" for="device-8">Device</label>
+            <input id="device-8" type="text" data-answers="barcode scanner|bar code scanner|barcode reader|bar code reader" aria-label="Question 8 device">
+          </div>
+
+          <div class="answer-group">
+            <label class="answer-label" for="type-8">Device type</label>
+            <select id="type-8" aria-label="Question 8 type">
+              <option value="">Choose…</option>
+              <option value="input">Input</option>
+              <option value="output">Output</option>
+              <option value="multifunction">Multifunction</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question" data-type="input">
+        <div class="qtop">
+          <span class="num">9.</span>
+          <div class="definition">A hand-held controller with sticks and buttons used to control games or simulations.</div>
+        </div>
+
+        <div class="answer-row">
+          <div class="answer-group">
+            <label class="answer-label" for="device-9">Device</label>
+            <input id="device-9" type="text" data-answers="game controller|controller|gamepad|joypad" aria-label="Question 9 device">
+          </div>
+
+          <div class="answer-group">
+            <label class="answer-label" for="type-9">Device type</label>
+            <select id="type-9" aria-label="Question 9 type">
+              <option value="">Choose…</option>
+              <option value="input">Input</option>
+              <option value="output">Output</option>
+              <option value="multifunction">Multifunction</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question" data-type="input">
+        <div class="qtop">
+          <span class="num">10.</span>
+          <div class="definition">A flat drawing surface used with a stylus to enter drawings, handwriting or precise movements into a computer.</div>
+        </div>
+
+        <div class="answer-row">
+          <div class="answer-group">
+            <label class="answer-label" for="device-10">Device</label>
+            <input id="device-10" type="text" data-answers="graphics tablet|graphic tablet|drawing tablet" aria-label="Question 10 device">
+          </div>
+
+          <div class="answer-group">
+            <label class="answer-label" for="type-10">Device type</label>
+            <select id="type-10" aria-label="Question 10 type">
+              <option value="">Choose…</option>
+              <option value="input">Input</option>
+              <option value="output">Output</option>
+              <option value="multifunction">Multifunction</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question" data-type="output">
+        <div class="qtop">
+          <span class="num">11.</span>
+          <div class="definition">A device that projects a computer image onto a large screen or wall.</div>
+        </div>
+
+        <div class="answer-row">
+          <div class="answer-group">
+            <label class="answer-label" for="device-11">Device</label>
+            <input id="device-11" type="text" data-answers="projector" aria-label="Question 11 device">
+          </div>
+
+          <div class="answer-group">
+            <label class="answer-label" for="type-11">Device type</label>
+            <select id="type-11" aria-label="Question 11 type">
+              <option value="">Choose…</option>
+              <option value="input">Input</option>
+              <option value="output">Output</option>
+              <option value="multifunction">Multifunction</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question" data-type="output">
+        <div class="qtop">
+          <span class="num">12.</span>
+          <div class="definition">A device worn over or in the ears to produce sound privately for the user.</div>
+        </div>
+
+        <div class="answer-row">
+          <div class="answer-group">
+            <label class="answer-label" for="device-12">Device</label>
+            <input id="device-12" type="text" data-answers="headphones|headphone|earphones|earbuds" aria-label="Question 12 device">
+          </div>
+
+          <div class="answer-group">
+            <label class="answer-label" for="type-12">Device type</label>
+            <select id="type-12" aria-label="Question 12 type">
+              <option value="">Choose…</option>
+              <option value="input">Input</option>
+              <option value="output">Output</option>
+              <option value="multifunction">Multifunction</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="feedback"></div>
+      </div>
+</section>
+    <section class="section">
+      <div class="section-head">
+        <p class="section-kicker">Part C</p>
+        <h2>Challenge: multifunction devices</h2>
+        <p class="section-desc">These devices can both send data into a system and produce an output for the user.</p>
+      </div>
+
+      <div class="question" data-type="multifunction">
+        <div class="qtop">
+          <span class="num">13.</span>
+          <div class="definition">A display that shows information and also detects where the user touches the screen.</div>
+        </div>
+
+        <div class="answer-row">
+          <div class="answer-group">
+            <label class="answer-label" for="device-13">Device</label>
+            <input id="device-13" type="text" data-answers="touchscreen|touch screen" aria-label="Question 13 device">
+          </div>
+
+          <div class="answer-group">
+            <label class="answer-label" for="type-13">Device type</label>
+            <select id="type-13" aria-label="Question 13 type">
+              <option value="">Choose…</option>
+              <option value="input">Input</option>
+              <option value="output">Output</option>
+              <option value="multifunction">Multifunction</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question" data-type="multifunction">
+        <div class="qtop">
+          <span class="num">14.</span>
+          <div class="definition">A device that can print documents and also scan or copy paper documents.</div>
+        </div>
+
+        <div class="answer-row">
+          <div class="answer-group">
+            <label class="answer-label" for="device-14">Device</label>
+            <input id="device-14" type="text" data-answers="multifunction printer|multi function printer|all in one printer|all-in-one printer|mfp" aria-label="Question 14 device">
+          </div>
+
+          <div class="answer-group">
+            <label class="answer-label" for="type-14">Device type</label>
+            <select id="type-14" aria-label="Question 14 type">
+              <option value="">Choose…</option>
+              <option value="input">Input</option>
+              <option value="output">Output</option>
+              <option value="multifunction">Multifunction</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question" data-type="multifunction">
+        <div class="qtop">
+          <span class="num">15.</span>
+          <div class="definition">A wearable audio device that includes speakers for listening and a microphone for speaking.</div>
+        </div>
+
+        <div class="answer-row">
+          <div class="answer-group">
+            <label class="answer-label" for="device-15">Device</label>
+            <input id="device-15" type="text" data-answers="headset|gaming headset|computer headset" aria-label="Question 15 device">
+          </div>
+
+          <div class="answer-group">
+            <label class="answer-label" for="type-15">Device type</label>
+            <select id="type-15" aria-label="Question 15 type">
+              <option value="">Choose…</option>
+              <option value="input">Input</option>
+              <option value="output">Output</option>
+              <option value="multifunction">Multifunction</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question" data-type="multifunction">
+        <div class="qtop">
+          <span class="num">16.</span>
+          <div class="definition">A headset that displays a computer-generated 3D environment and also tracks the user's head or hand movements.</div>
+        </div>
+
+        <div class="answer-row">
+          <div class="answer-group">
+            <label class="answer-label" for="device-16">Device</label>
+            <input id="device-16" type="text" data-answers="vr headset|virtual reality headset|virtual-reality headset" aria-label="Question 16 device">
+          </div>
+
+          <div class="answer-group">
+            <label class="answer-label" for="type-16">Device type</label>
+            <select id="type-16" aria-label="Question 16 type">
+              <option value="">Choose…</option>
+              <option value="input">Input</option>
+              <option value="output">Output</option>
+              <option value="multifunction">Multifunction</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question" data-type="multifunction">
+        <div class="qtop">
+          <span class="num">17.</span>
+          <div class="definition">A payment terminal that displays information to the user and also accepts touch, chip-and-PIN or contactless input.</div>
+        </div>
+
+        <div class="answer-row">
+          <div class="answer-group">
+            <label class="answer-label" for="device-17">Device</label>
+            <input id="device-17" type="text" data-answers="payment terminal|card terminal|chip and pin terminal|chip-and-pin terminal|epos terminal" aria-label="Question 17 device">
+          </div>
+
+          <div class="answer-group">
+            <label class="answer-label" for="type-17">Device type</label>
+            <select id="type-17" aria-label="Question 17 type">
+              <option value="">Choose…</option>
+              <option value="input">Input</option>
+              <option value="output">Output</option>
+              <option value="multifunction">Multifunction</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="feedback"></div>
+      </div>
+
+      <div class="question" data-type="multifunction">
+        <div class="qtop">
+          <span class="num">18.</span>
+          <div class="definition">A device in a car or kiosk that displays information and also accepts commands through touch controls.</div>
+        </div>
+
+        <div class="answer-row">
+          <div class="answer-group">
+            <label class="answer-label" for="device-18">Device</label>
+            <input id="device-18" type="text" data-answers="touchscreen display|touch screen display|touchscreen|touch screen" aria-label="Question 18 device">
+          </div>
+
+          <div class="answer-group">
+            <label class="answer-label" for="type-18">Device type</label>
+            <select id="type-18" aria-label="Question 18 type">
+              <option value="">Choose…</option>
+              <option value="input">Input</option>
+              <option value="output">Output</option>
+              <option value="multifunction">Multifunction</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="feedback"></div>
+      </div>
+</section>
+    <div class="actions">
+      <button type="submit" id="checkBtn">Check answers</button>
+      <button type="button" id="retryBtn">Try again</button>
+      <button type="button" id="resetBtn">Reset activity</button>
+      <div id="completeMsg">✓ All questions correct</div>
+    </div>
+
+    <p class="footer-note">
+      Some device names have more than one accepted wording. You still need to choose the correct device type.
+    </p>
+  </form>
+</main>
+
+<script>
+const form=document.getElementById('deviceForm');
+const questions=[...document.querySelectorAll('.question')];
+const checkBtn=document.getElementById('checkBtn');
+const retryBtn=document.getElementById('retryBtn');
+const resetBtn=document.getElementById('resetBtn');
+const completeMsg=document.getElementById('completeMsg');
+
+function clean(v){
+  return String(v)
+    .trim()
+    .toLowerCase()
+    .replace(/[.,!?;:]+$/g,'')
+    .replace(/\s+/g,' ');
+}
+
+function deviceCorrect(input){
+  const learner=clean(input.value);
+  const answers=input.dataset.answers.split('|').map(clean);
+  return learner!=='' && answers.includes(learner);
+}
+
+form.addEventListener('submit',e=>{
+  e.preventDefault();
+  let hasIncorrect=false;
+
+  questions.forEach(q=>{
+    const input=q.querySelector('input');
+    const select=q.querySelector('select');
+    const feedback=q.querySelector('.feedback');
+
+    q.classList.remove('correct','incorrect');
+
+    const nameOK=deviceCorrect(input);
+    const typeOK=select.value===q.dataset.type;
+
+    if(nameOK && typeOK){
+      q.classList.add('correct');
+      feedback.textContent='✓ Correct';
+      input.disabled=true;
+      select.disabled=true;
+    }else{
+      q.classList.add('incorrect');
+
+      if(!nameOK && !typeOK){
+        feedback.textContent='✗ Not quite — check both the device and its type';
+      }else if(!nameOK){
+        feedback.textContent='✗ The device name is not quite right — try again';
+      }else{
+        feedback.textContent='✗ Device is right, but check whether it is input, output or multifunction';
+      }
+
+      input.disabled=false;
+      select.disabled=false;
+      hasIncorrect=true;
+    }
+  });
+
+  checkBtn.style.display='none';
+  retryBtn.style.display=hasIncorrect?'inline-block':'none';
+  completeMsg.style.display=hasIncorrect?'none':'block';
+});
+
+retryBtn.addEventListener('click',()=>{
+  questions.forEach(q=>{
+    if(q.classList.contains('incorrect')){
+      q.classList.remove('incorrect');
+      q.querySelector('.feedback').textContent='';
+      q.querySelector('input').disabled=false;
+      q.querySelector('select').disabled=false;
+    }
+  });
+
+  retryBtn.style.display='none';
+  checkBtn.style.display='inline-block';
+  completeMsg.style.display='none';
+
+  const first=questions.find(q=>!q.classList.contains('correct'));
+  if(first) first.querySelector('input').focus();
+});
+
+resetBtn.addEventListener('click',()=>{
+  form.reset();
+
+  questions.forEach(q=>{
+    q.classList.remove('correct','incorrect');
+    q.querySelector('.feedback').textContent='';
+    q.querySelector('input').disabled=false;
+    q.querySelector('select').disabled=false;
+  });
+
+  retryBtn.style.display='none';
+  checkBtn.style.display='inline-block';
+  completeMsg.style.display='none';
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+</script>
+</body>
+</html>
