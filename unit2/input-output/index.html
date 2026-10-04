@@ -18,25 +18,27 @@
 }
 *{box-sizing:border-box}
 
-body{
+html,body{
   margin:0;
+  min-height:100%;
+  background:#fff;
+}
+
+body{
   font-family:Arial,Helvetica,sans-serif;
   color:var(--ink);
-  background:#f4f6f8;
-  line-height:1.5;
+  line-height:1.45;
 }
 
 .page{
   max-width:980px;
   margin:0 auto;
   background:#fff;
-  min-height:100vh;
-  padding:42px 44px 56px;
-  box-shadow:0 0 0 1px #e7ebef;
+  padding:28px 30px 34px;
 }
 
 .hero{
-  margin-bottom:28px;
+  margin-bottom:20px;
 }
 
 .eyebrow{
@@ -62,8 +64,8 @@ h1{
 }
 
 .instructions{
-  margin:24px 0 30px;
-  padding:16px 18px;
+  margin:18px 0 24px;
+  padding:13px 15px;
   background:var(--soft);
   border-left:5px solid var(--accent);
   border-radius:0 8px 8px 0;
@@ -78,12 +80,12 @@ h1{
 }
 
 .section{
-  margin-top:34px;
+  margin-top:26px;
 }
 
 .section-head{
-  margin-bottom:14px;
-  padding-bottom:10px;
+  margin-bottom:10px;
+  padding-bottom:8px;
   border-bottom:2px solid var(--line);
 }
 
@@ -110,8 +112,8 @@ h1{
 .question{
   border:1px solid var(--line);
   border-radius:9px;
-  padding:16px 17px;
-  margin:12px 0;
+  padding:12px 14px;
+  margin:8px 0;
   background:#fff;
 }
 
@@ -143,7 +145,7 @@ h1{
 }
 
 .answer-row{
-  margin:12px 0 0 2.55rem;
+  margin:9px 0 0 2.55rem;
   display:grid;
   grid-template-columns:minmax(260px,1fr) 220px;
   gap:12px;
@@ -178,7 +180,7 @@ input:focus,select:focus{
 
 .feedback{
   display:none;
-  margin:8px 0 0 2.55rem;
+  margin:6px 0 0 2.55rem;
   font-size:.84rem;
   font-weight:700;
 }
@@ -192,8 +194,8 @@ input:focus,select:focus{
 .incorrect .feedback{color:#8e0000}
 
 .actions{
-  margin-top:34px;
-  padding-top:20px;
+  margin-top:26px;
+  padding-top:14px;
   border-top:2px solid var(--line);
   display:flex;
   gap:10px;
@@ -204,7 +206,7 @@ input:focus,select:focus{
 button{
   border:0;
   border-radius:7px;
-  padding:10px 15px;
+  padding:8px 13px;
   font-size:.92rem;
   font-weight:700;
   cursor:pointer;
@@ -236,7 +238,7 @@ button{
 }
 
 @media(max-width:720px){
-  .page{padding:26px 18px 36px}
+  .page{padding:20px 14px 28px}
   h1{font-size:1.65rem}
   .answer-row{
     margin-left:0;
