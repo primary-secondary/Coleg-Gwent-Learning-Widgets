@@ -22,6 +22,7 @@ html,body{
   margin:0;
   min-height:100%;
   background:#fff;
+  overflow-x:hidden;
 }
 
 body{
@@ -34,11 +35,11 @@ body{
   max-width:980px;
   margin:0 auto;
   background:#fff;
-  padding:28px 30px 34px;
+  padding:18px 22px 24px;
 }
 
 .hero{
-  margin-bottom:20px;
+  margin-bottom:14px;
 }
 
 .eyebrow{
@@ -52,7 +53,7 @@ body{
 
 h1{
   margin:0 0 8px;
-  font-size:2rem;
+  font-size:1.72rem;
   line-height:1.15;
 }
 
@@ -64,15 +65,15 @@ h1{
 }
 
 .instructions{
-  margin:18px 0 24px;
-  padding:13px 15px;
+  margin:14px 0 18px;
+  padding:10px 12px;
   background:var(--soft);
   border-left:5px solid var(--accent);
   border-radius:0 8px 8px 0;
 }
 
 .instructions p{
-  margin:0 0 8px;
+  margin:0 0 5px;
 }
 
 .instructions p:last-child{
@@ -80,12 +81,12 @@ h1{
 }
 
 .section{
-  margin-top:26px;
+  margin-top:20px;
 }
 
 .section-head{
-  margin-bottom:10px;
-  padding-bottom:8px;
+  margin-bottom:8px;
+  padding-bottom:6px;
   border-bottom:2px solid var(--line);
 }
 
@@ -100,7 +101,7 @@ h1{
 
 .section h2{
   margin:0 0 4px;
-  font-size:1.3rem;
+  font-size:1.15rem;
 }
 
 .section-desc{
@@ -112,8 +113,8 @@ h1{
 .question{
   border:1px solid var(--line);
   border-radius:9px;
-  padding:12px 14px;
-  margin:8px 0;
+  padding:9px 11px;
+  margin:6px 0;
   background:#fff;
 }
 
@@ -141,13 +142,13 @@ h1{
 
 .definition{
   flex:1;
-  font-size:.98rem;
+  font-size:.92rem;
 }
 
 .answer-row{
-  margin:9px 0 0 2.55rem;
+  margin:7px 0 0 2.35rem;
   display:grid;
-  grid-template-columns:minmax(260px,1fr) 220px;
+  grid-template-columns:minmax(220px,1fr) 190px;
   gap:12px;
 }
 
@@ -165,7 +166,7 @@ h1{
 
 input,select{
   width:100%;
-  padding:9px 10px;
+  padding:7px 8px;
   border:1px solid #aab3bd;
   border-radius:6px;
   font:inherit;
@@ -180,7 +181,7 @@ input:focus,select:focus{
 
 .feedback{
   display:none;
-  margin:6px 0 0 2.55rem;
+  margin:5px 0 0 2.35rem;
   font-size:.84rem;
   font-weight:700;
 }
@@ -194,8 +195,8 @@ input:focus,select:focus{
 .incorrect .feedback{color:#8e0000}
 
 .actions{
-  margin-top:26px;
-  padding-top:14px;
+  margin-top:20px;
+  padding-top:10px;
   border-top:2px solid var(--line);
   display:flex;
   gap:10px;
@@ -206,7 +207,7 @@ input:focus,select:focus{
 button{
   border:0;
   border-radius:7px;
-  padding:8px 13px;
+  padding:7px 11px;
   font-size:.92rem;
   font-weight:700;
   cursor:pointer;
@@ -238,7 +239,7 @@ button{
 }
 
 @media(max-width:720px){
-  .page{padding:20px 14px 28px}
+  .page{padding:14px 10px 20px}
   h1{font-size:1.65rem}
   .answer-row{
     margin-left:0;
