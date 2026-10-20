@@ -32,7 +32,7 @@ input{width:235px;max-width:100%}select{min-width:135px}
 .actions{display:flex;gap:8px;align-items:center;margin-top:12px;flex-wrap:wrap}
 button{border:0;border-radius:6px;padding:7px 11px;font-size:.88rem;font-weight:700;cursor:pointer}
 #checkBtn{background:#1f2933;color:#fff}#retryBtn,#resetBtn{background:#e8ebef;color:#1f2933}#retryBtn{display:none}
-.tip{margin:9px 0 0;color:var(--muted);font-size:.8rem}
+.tip{margin:9px 0 0;color:var(--muted);font-size:.8rem}.validation-note{margin:8px 0 10px;color:var(--muted);font-size:.8rem}
 @media(max-width:560px){.answer-row{margin-left:0}.answer-group{width:100%}input,select{width:100%}.feedback{margin-left:0}}
 </style>
 </head>
@@ -48,6 +48,7 @@ button{border:0;border-radius:6px;padding:7px 11px;font-size:.88rem;font-weight:
       Identify the storage device from each description and decide whether it is normally <strong>internal</strong> or <strong>external</strong>.
       Then complete the storage terminology gaps. Incorrect answers are not revealed — use <strong>Try again</strong> and keep working until you get them right.
     </p>
+    <p class="validation-note"><strong>Answer matching:</strong> capital letters do not matter. Common abbreviations, full names, alternative valid terms, spacing and singular/plural forms are accepted.</p>
 
     <form id="storageForm" autocomplete="off">
       <div class="section-title">Part A — What am I?</div>
@@ -60,7 +61,7 @@ button{border:0;border-radius:6px;padding:7px 11px;font-size:.88rem;font-weight:
         <div class="answer-row">
           <div class="answer-group">
             <span class="answer-label">Device:</span>
-            <input type="text" data-answers="hard disk drive|hard drive|hdd" aria-label="Question 1 device">
+            <input type="text" data-answers="hard disk drive|hard drive|hard disk|hdd|hard disk drives|hard drives|hard disks|hdds" aria-label="Question 1 device">
           </div>
           <div class="answer-group">
             <span class="answer-label">Usually:</span>
@@ -82,7 +83,7 @@ button{border:0;border-radius:6px;padding:7px 11px;font-size:.88rem;font-weight:
         <div class="answer-row">
           <div class="answer-group">
             <span class="answer-label">Device:</span>
-            <input type="text" data-answers="solid state drive|ssd|solid-state drive" aria-label="Question 2 device">
+            <input type="text" data-answers="solid state drive|solid-state drive|ssd|solid state drives|solid-state drives|ssds" aria-label="Question 2 device">
           </div>
           <div class="answer-group">
             <span class="answer-label">Usually:</span>
@@ -104,7 +105,7 @@ button{border:0;border-radius:6px;padding:7px 11px;font-size:.88rem;font-weight:
         <div class="answer-row">
           <div class="answer-group">
             <span class="answer-label">Device:</span>
-            <input type="text" data-answers="m.2 ssd|m2 ssd|m.2 drive|m2 drive|nvme ssd|nvme drive" aria-label="Question 3 device">
+            <input type="text" data-answers="m.2 ssd|m2 ssd|m.2 drive|m2 drive|nvme ssd|nvme drive|m.2 solid state drive|m2 solid state drive|nvme solid state drive" aria-label="Question 3 device">
           </div>
           <div class="answer-group">
             <span class="answer-label">Usually:</span>
@@ -126,7 +127,7 @@ button{border:0;border-radius:6px;padding:7px 11px;font-size:.88rem;font-weight:
         <div class="answer-row">
           <div class="answer-group">
             <span class="answer-label">Device:</span>
-            <input type="text" data-answers="usb flash drive|usb drive|flash drive|memory stick|usb memory stick" aria-label="Question 4 device">
+            <input type="text" data-answers="usb flash drive|usb drive|flash drive|memory stick|usb memory stick|usb stick|pen drive|thumb drive|usb flash drives|usb drives|flash drives|memory sticks" aria-label="Question 4 device">
           </div>
           <div class="answer-group">
             <span class="answer-label">Usually:</span>
@@ -148,7 +149,7 @@ button{border:0;border-radius:6px;padding:7px 11px;font-size:.88rem;font-weight:
         <div class="answer-row">
           <div class="answer-group">
             <span class="answer-label">Device:</span>
-            <input type="text" data-answers="external hard drive|external hard disk|external hdd|portable hard drive" aria-label="Question 5 device">
+            <input type="text" data-answers="external hard drive|external hard disk|external hdd|portable hard drive|portable hard disk|external hard drives|external hard disks|portable hard drives" aria-label="Question 5 device">
           </div>
           <div class="answer-group">
             <span class="answer-label">Usually:</span>
@@ -170,7 +171,7 @@ button{border:0;border-radius:6px;padding:7px 11px;font-size:.88rem;font-weight:
         <div class="answer-row">
           <div class="answer-group">
             <span class="answer-label">Device:</span>
-            <input type="text" data-answers="sd card|secure digital card" aria-label="Question 6 device">
+            <input type="text" data-answers="sd card|secure digital card|sd memory card|secure digital memory card|sd cards|secure digital cards" aria-label="Question 6 device">
           </div>
           <div class="answer-group">
             <span class="answer-label">Usually:</span>
@@ -192,7 +193,7 @@ button{border:0;border-radius:6px;padding:7px 11px;font-size:.88rem;font-weight:
         <div class="answer-row">
           <div class="answer-group">
             <span class="answer-label">Device:</span>
-            <input type="text" data-answers="micro sd card|microsd card|micro-sd card|micro sd" aria-label="Question 7 device">
+            <input type="text" data-answers="micro sd card|microsd card|micro-sd card|micro sd|microsd|micro sd cards|microsd cards|micro-sd cards" aria-label="Question 7 device">
           </div>
           <div class="answer-group">
             <span class="answer-label">Usually:</span>
@@ -214,7 +215,7 @@ button{border:0;border-radius:6px;padding:7px 11px;font-size:.88rem;font-weight:
         <div class="answer-row">
           <div class="answer-group">
             <span class="answer-label">Device:</span>
-            <input type="text" data-answers="dvd|digital versatile disc|digital video disc" aria-label="Question 8 device">
+            <input type="text" data-answers="dvd|digital versatile disc|digital video disc|dvds|digital versatile discs|digital video discs" aria-label="Question 8 device">
           </div>
           <div class="answer-group">
             <span class="answer-label">Usually:</span>
@@ -233,7 +234,7 @@ button{border:0;border-radius:6px;padding:7px 11px;font-size:.88rem;font-weight:
       <div class="question gap-question">
         <div class="qrow">
           <span class="num">9.</span>
-          <div class="prompt">An HDD stores data magnetically on spinning <input type="text" data-answers="platters|disks|discs" aria-label="Question 9 answer">.</div>
+          <div class="prompt">An HDD stores data magnetically on spinning <input type="text" data-answers="platters|platter|disks|disk|discs|disc" aria-label="Question 9 answer">.</div>
         </div>
         <div class="feedback"></div>
       </div>
@@ -241,7 +242,7 @@ button{border:0;border-radius:6px;padding:7px 11px;font-size:.88rem;font-weight:
       <div class="question gap-question">
         <div class="qrow">
           <span class="num">10.</span>
-          <div class="prompt">An SSD has no moving parts and normally uses <input type="text" data-answers="flash|nand|nand flash" aria-label="Question 10 answer"> memory.</div>
+          <div class="prompt">An SSD has no moving parts <input type="text" data-answers="flash|flash memory|nand|nand flash|nand memory"h|nand|nand flash" aria-label="Question 10 answer"> memory.</div>
         </div>
         <div class="feedback"></div>
       </div>
@@ -249,7 +250,7 @@ button{border:0;border-radius:6px;padding:7px 11px;font-size:.88rem;font-weight:
       <div class="question gap-question">
         <div class="qrow">
           <span class="num">11.</span>
-          <div class="prompt">A USB flash drive is useful for moving files because it is small and <input type="text" data-answers="portable|removable" aria-label="Question 11 answer">.</div>
+          <div class="prompt">A USB flash drive is usefu<input type="text" data-answers="portable|removable|easy to carry"pe="text" data-answers="portable|removable" aria-label="Question 11 answer">.</div>
         </div>
         <div class="feedback"></div>
       </div>
@@ -257,7 +258,7 @@ button{border:0;border-radius:6px;padding:7px 11px;font-size:.88rem;font-weight:
       <div class="question gap-question">
         <div class="qrow">
           <span class="num">12.</span>
-          <div class="prompt">Internal storage is normally installed <input type="text" data-answers="inside|within" aria-label="Question 12 answer"> the computer case.</div>
+          <d<input type="text" data-answers="inside|within|internally|inside the case|within the case"installed <input type="text" data-answers="inside|within" aria-label="Question 12 answer"> the computer case.</div>
         </div>
         <div class="feedback"></div>
       </div>
@@ -265,22 +266,18 @@ button{border:0;border-radius:6px;padding:7px 11px;font-size:.88rem;font-weight:
       <div class="question gap-question">
         <div class="qrow">
           <span class="num">13.</span>
-          <div class="prompt">External storage is usually connected when needed using a port such as <input type="text" data-answers="usb|usb-c|usb c" aria-label="Question 13 answer">.</div>
+ <input type="text" data-answers="usb|usb c|usb-c|universal serial bus"usually connected when needed using a port such as <input type="text" data-answers="usb|usb-c|usb c" aria-label="Question 13 answer">.</div>
         </div>
         <div class="feedback"></div>
       </div>
 
       <div class="question gap-question">
-        <div class="qrow">
-          <span class="num">14.</span>
-          <div class="prompt">Optical discs are read using a laser in an optical <input type="text" data-answers="drive|disc drive|disk drive" aria-label="Question 14 answer">.</div>
+        <div class="qrow"><input type="text" data-answers="drive|disc drive|disk drive|optical drive""prompt">Optical discs are read using a laser in an optical <input type="text" data-answers="drive|disc drive|disk drive" aria-label="Question 14 answer">.</div>
         </div>
         <div class="feedback"></div>
       </div>
 
-      <div class="question gap-question">
-        <div class="qrow">
-          <span class="num">15.</span>
+      <div class="ques<input type="text" data-answers="capacity|storage capacity|size"pan class="num">15.</span>
           <div class="prompt">A storage device's <input type="text" data-answers="capacity|storage capacity" aria-label="Question 15 answer"> describes how much data it can hold.</div>
         </div>
         <div class="feedback"></div>
@@ -288,8 +285,7 @@ button{border:0;border-radius:6px;padding:7px 11px;font-size:.88rem;font-weight:
 
       <div class="question gap-question">
         <div class="qrow">
-          <span class="num">16.</span>
-          <div class="prompt">SSDs are usually faster than HDDs because they do not need to move a mechanical read/write <input type="text" data-answers="head|heads" aria-label="Question 16 answer">.</div>
+          <span clas<input type="text" data-answers="head|heads|read write head|read/write head|read write heads|read/write heads"mpt">SSDs are usually faster than HDDs because they do not need to move a mechanical read/write <input type="text" data-answers="head|heads" aria-label="Question 16 answer">.</div>
         </div>
         <div class="feedback"></div>
       </div>
@@ -313,13 +309,38 @@ const retryBtn=document.getElementById('retryBtn');
 const resetBtn=document.getElementById('resetBtn');
 
 function clean(v){
-  return String(v).trim().toLowerCase().replace(/[.,!?;:]+$/g,'').replace(/\s+/g,' ');
+  return String(v)
+    .trim()
+    .toLowerCase()
+    .replace(/&/g,' and ')
+    .replace(/[_/\\\-–—]+/g,' ')
+    .replace(/[()[\]{}'",.?!;:]+/g,' ')
+    .replace(/\s+/g,' ')
+    .trim()
+    .replace(/^(a|an|the)\s+/,'');
+}
+
+function answerForms(v){
+  const base=clean(v);
+  const forms=new Set([base]);
+
+  // Common singular/plural flexibility.
+  if(base.endsWith('ies') && base.length>3) forms.add(base.slice(0,-3)+'y');
+  if(base.endsWith('es') && base.length>2) forms.add(base.slice(0,-2));
+  if(base.endsWith('s') && !base.endsWith('ss') && base.length>1) forms.add(base.slice(0,-1));
+
+  return forms;
 }
 
 function textCorrect(input){
-  const learner=clean(input.value);
-  const answers=input.dataset.answers.split('|').map(clean);
-  return learner!=='' && answers.includes(learner);
+  const learnerForms=answerForms(input.value);
+  if([...learnerForms].every(x=>x==='')) return false;
+
+  const accepted=input.dataset.answers
+    .split('|')
+    .flatMap(answer=>[...answerForms(answer)]);
+
+  return accepted.some(answer=>learnerForms.has(answer));
 }
 
 form.addEventListener('submit',e=>{
