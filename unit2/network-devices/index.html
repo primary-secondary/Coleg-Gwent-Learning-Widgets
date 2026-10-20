@@ -52,7 +52,7 @@ input{width:270px;max-width:100%}select{min-width:190px;max-width:100%}
 .section-complete{display:none;font-size:.84rem;font-weight:700;color:#1b5e20;margin-left:auto}
 .actions{margin-top:24px;padding-top:12px;border-top:2px solid var(--line);display:flex;gap:8px}
 #resetBtn{background:#e8ebef;color:#1f2933}
-.footer-note{margin-top:10px;color:var(--muted);font-size:.81rem}
+.footer-note{margin-top:10px;color:var(--muted);font-size:.81rem}.validation-note{margin:8px 0 14px;color:var(--muted);font-size:.82rem}
 @media(max-width:720px){
  .page{padding:14px 10px 20px} h1{font-size:1.52rem}
  .answer-row,.feedback,.order-box,.mini-note,.match-grid,.multi-grid,.odd-grid{margin-left:0}
@@ -65,15 +65,16 @@ input{width:270px;max-width:100%}select{min-width:190px;max-width:100%}
 <p class="lead">Focus on the physical devices and connections that allow data to move around a network and out to the internet.</p></header>
 <section class="instructions"><p><strong>Work one section at a time.</strong> Use the Check button at the end of each part.</p>
 <p>Correct answers lock in. Incorrect answers are not revealed — use <strong>Try again</strong> and keep working.</p></section>
+<p class="validation-note"><strong>Answer matching:</strong> capital letters do not matter. Common abbreviations, full names, alternative valid terms, spacing, punctuation and singular/plural forms are accepted.</p>
 <form id="quizForm" autocomplete="off">
 
 <section class="section"><div class="section-head"><p class="section-kicker">Part A</p><h2>Network devices</h2><p class="section-desc">Identify what the main pieces of network hardware do.</p></div>
-<div class="question text-q"><div class="qtop"><span class="num">1.</span><div class="prompt">A computer, tablet or phone that requests a service from another computer on the network is called a ______.</div></div><div class="answer-row"><input data-answers="client|client device"></div><div class="feedback"></div></div>
-<div class="question text-q"><div class="qtop"><span class="num">2.</span><div class="prompt">A computer that provides files, logins, websites or other services to clients is a ______.</div></div><div class="answer-row"><input data-answers="server"></div><div class="feedback"></div></div>
-<div class="question text-q"><div class="qtop"><span class="num">3.</span><div class="prompt">A device that connects several wired devices on the same LAN and forwards data to the correct port is a ______.</div></div><div class="answer-row"><input data-answers="switch|network switch"></div><div class="feedback"></div></div>
-<div class="question text-q"><div class="qtop"><span class="num">4.</span><div class="prompt">A device that connects different networks and directs data between them is a ______.</div></div><div class="answer-row"><input data-answers="router"></div><div class="feedback"></div></div>
-<div class="question text-q"><div class="qtop"><span class="num">5.</span><div class="prompt">A device that allows Wi‑Fi devices to join a wired network is an ______.</div></div><div class="answer-row"><input data-answers="access point|wireless access point|wap"></div><div class="feedback"></div></div>
-<div class="question text-q"><div class="qtop"><span class="num">6.</span><div class="prompt">The organisation that provides a home or business with internet access is an ______.</div></div><div class="answer-row"><input data-answers="isp|internet service provider"></div><div class="feedback"></div></div>
+<div class="question text-q"><div class="qtop"><span class="num">1.</span><div class="prompt">A computer, tablet or phone that requests a service from another computer on the network is called a ______.</div></div><div class="answer-row"><input data-answers="client|client device|network client|computer client|clients|client devices|network clients"></div><div class="feedback"></div></div>
+<div class="question text-q"><div class="qtop"><span class="num">2.</span><div class="prompt">A computer that provides files, logins, websites or other services to clients is a ______.</div></div><div class="answer-row"><input data-answers="server|network server|computer server|servers|network servers"></div><div class="feedback"></div></div>
+<div class="question text-q"><div class="qtop"><span class="num">3.</span><div class="prompt">A device that connects several wired devices on the same LAN and forwards data to the correct port is a ______.</div></div><div class="answer-row"><input data-answers="switch|network switch|ethernet switch|switches|network switches|ethernet switches"></div><div class="feedback"></div></div>
+<div class="question text-q"><div class="qtop"><span class="num">4.</span><div class="prompt">A device that connects different networks and directs data between them is a ______.</div></div><div class="answer-row"><input data-answers="router|network router|routers|network routers"></div><div class="feedback"></div></div>
+<div class="question text-q"><div class="qtop"><span class="num">5.</span><div class="prompt">A device that allows Wi‑Fi devices to join a wired network is an ______.</div></div><div class="answer-row"><input data-answers="access point|wireless access point|wireless access-point|wap|ap|wifi access point|wi fi access point|wi-fi access point|access points|wireless access points"></div><div class="feedback"></div></div>
+<div class="question text-q"><div class="qtop"><span class="num">6.</span><div class="prompt">The organisation that provides a home or business with internet access is an ______.</div></div><div class="answer-row"><input data-answers="isp|internet service provider|internet provider|broadband provider|internet services provider|internet service providers|isps"></div><div class="feedback"></div></div>
 <div class="question match-q"><div class="qtop"><span class="num">7.</span><div class="prompt">Match each device to its main job.</div></div>
 <div class="match-grid">
 <div class="match-row"><span class="match-term">Switch</span><select data-answer="lan"><option value="">Choose…</option><option value="lan">Connects wired devices within a LAN</option><option value="route">Routes data between networks</option><option value="wifi">Lets wireless devices join the network</option><option value="services">Provides services to clients</option></select></div>
@@ -84,10 +85,10 @@ input{width:270px;max-width:100%}select{min-width:190px;max-width:100%}
 <div class="section-actions"><button type="button" class="section-check">Check Part A</button><button type="button" class="section-retry">Try again</button><button type="button" class="section-clear">Clear Part A</button><span class="section-complete">✓ Part A complete</span></div></section>
 
 <section class="section"><div class="section-head"><p class="section-kicker">Part B</p><h2>Guided connections</h2><p class="section-desc">Compare the main wired connection types.</p></div>
-<div class="question text-q"><div class="qtop"><span class="num">8.</span><div class="prompt">A common copper Ethernet cable using twisted pairs with no extra shielding is ______.</div></div><div class="answer-row"><input data-answers="utp|unshielded twisted pair|unshielded twisted-pair"></div><div class="feedback"></div></div>
-<div class="question text-q"><div class="qtop"><span class="num">9.</span><div class="prompt">A twisted-pair cable with extra shielding to reduce electrical interference is ______.</div></div><div class="answer-row"><input data-answers="stp|shielded twisted pair|shielded twisted-pair"></div><div class="feedback"></div></div>
-<div class="question text-q"><div class="qtop"><span class="num">10.</span><div class="prompt">A cable with a central conductor surrounded by insulation and shielding is ______ cable.</div></div><div class="answer-row"><input data-answers="coaxial|coax|co-axial"></div><div class="feedback"></div></div>
-<div class="question text-q"><div class="qtop"><span class="num">11.</span><div class="prompt">A connection that carries data as pulses of light through thin strands of glass or plastic is ______.</div></div><div class="answer-row"><input data-answers="fibre optic|fibre-optic|fibre optics|fiber optic|fiber-optic|fiber optics"></div><div class="feedback"></div></div>
+<div class="question text-q"><div class="qtop"><span class="num">8.</span><div class="prompt">A common copper Ethernet cable using twisted pairs with no extra shielding is ______.</div></div><div class="answer-row"><input data-answers="utp|unshielded twisted pair|unshielded twisted-pair|unshielded twisted pair cable|utp cable|utp cables"></div><div class="feedback"></div></div>
+<div class="question text-q"><div class="qtop"><span class="num">9.</span><div class="prompt">A twisted-pair cable with extra shielding to reduce electrical interference is ______.</div></div><div class="answer-row"><input data-answers="stp|shielded twisted pair|shielded twisted-pair|shielded twisted pair cable|stp cable|stp cables"></div><div class="feedback"></div></div>
+<div class="question text-q"><div class="qtop"><span class="num">10.</span><div class="prompt">A cable with a central conductor surrounded by insulation and shielding is ______ cable.</div></div><div class="answer-row"><input data-answers="coaxial|coax|co-axial|coaxial cable|coax cable|coaxial cables"></div><div class="feedback"></div></div>
+<div class="question text-q"><div class="qtop"><span class="num">11.</span><div class="prompt">A connection that carries data as pulses of light through thin strands of glass or plastic is ______.</div></div><div class="answer-row"><input data-answers="fibre optic|fibre-optic|fibre optics|fibre optic cable|fibre-optic cable|fiber optic|fiber-optic|fiber optics|fiber optic cable|optical fibre|optical fiber|fibre|fiber"></div><div class="feedback"></div></div>
 <div class="question select-q" data-answer="fibre"><div class="qtop"><span class="num">12.</span><div class="prompt">Which connection is usually best for a very fast link over a longer distance with strong resistance to electrical interference?</div></div><div class="answer-row"><select><option value="">Choose…</option><option value="utp">UTP</option><option value="stp">STP</option><option value="coax">Coaxial</option><option value="fibre">Fibre-optic</option></select></div><div class="feedback"></div></div>
 <div class="question select-q" data-answer="utp"><div class="qtop"><span class="num">13.</span><div class="prompt">Which cable is a common, relatively inexpensive choice for ordinary Ethernet connections within a room or building?</div></div><div class="answer-row"><select><option value="">Choose…</option><option value="utp">UTP</option><option value="fibre">Fibre-optic</option><option value="bluetooth">Bluetooth</option><option value="cell">Cellular</option></select></div><div class="feedback"></div></div>
 <div class="question select-q" data-answer="stp"><div class="qtop"><span class="num">14.</span><div class="prompt">A network cable must run close to electrical equipment where interference could be a problem. Which copper cable is the better choice?</div></div><div class="answer-row"><select><option value="">Choose…</option><option value="utp">UTP</option><option value="stp">STP</option><option value="wifi">Wi‑Fi</option><option value="bluetooth">Bluetooth</option></select></div><div class="feedback"></div></div>
@@ -122,8 +123,39 @@ const form=document.getElementById('quizForm');
 const sections=[...document.querySelectorAll('.section')];
 const resetBtn=document.getElementById('resetBtn');
 
-function clean(v){return String(v).trim().toLowerCase().replace(/[.,!?;:]+$/g,'').replace(/\s+/g,' ')}
-function textCorrect(input){const learner=clean(input.value);return learner!==''&&input.dataset.answers.split('|').map(clean).includes(learner)}
+function clean(v){
+  return String(v)
+    .trim()
+    .toLowerCase()
+    .replace(/&/g,' and ')
+    .replace(/[_/\\\-–—]+/g,' ')
+    .replace(/[()[\]{}'",.?!;:]+/g,' ')
+    .replace(/\s+/g,' ')
+    .trim()
+    .replace(/^(a|an|the)\s+/,'');
+}
+
+function answerForms(v){
+  const base=clean(v);
+  const forms=new Set([base]);
+
+  if(base.endsWith('ies') && base.length>3) forms.add(base.slice(0,-3)+'y');
+  if(base.endsWith('es') && base.length>2) forms.add(base.slice(0,-2));
+  if(base.endsWith('s') && !base.endsWith('ss') && base.length>1) forms.add(base.slice(0,-1));
+
+  return forms;
+}
+
+function textCorrect(input){
+  const learnerForms=answerForms(input.value);
+  if([...learnerForms].every(x=>x==='')) return false;
+
+  const accepted=input.dataset.answers
+    .split('|')
+    .flatMap(answer=>[...answerForms(answer)]);
+
+  return accepted.some(answer=>learnerForms.has(answer));
+}
 function updateOrderNumbers(box){[...box.querySelectorAll('.order-item')].forEach((item,i)=>item.querySelector('.order-pos').textContent=i+1)}
 
 document.querySelectorAll('.order-box').forEach(box=>{
