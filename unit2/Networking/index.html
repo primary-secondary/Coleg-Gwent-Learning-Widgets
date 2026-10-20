@@ -52,7 +52,7 @@ input{width:270px;max-width:100%}select{min-width:190px;max-width:100%}
 .section-complete{display:none;font-size:.84rem;font-weight:700;color:#1b5e20;margin-left:auto}
 .actions{margin-top:24px;padding-top:12px;border-top:2px solid var(--line);display:flex;gap:8px}
 #resetBtn{background:#e8ebef;color:#1f2933}
-.footer-note{margin-top:10px;color:var(--muted);font-size:.81rem}
+.footer-note{margin-top:10px;color:var(--muted);font-size:.81rem}.validation-note{margin:8px 0 14px;color:var(--muted);font-size:.82rem}
 @media(max-width:720px){
  .page{padding:14px 10px 20px} h1{font-size:1.52rem}
  .answer-row,.feedback,.order-box,.mini-note,.match-grid,.multi-grid,.odd-grid{margin-left:0}
@@ -65,13 +65,14 @@ input{width:270px;max-width:100%}select{min-width:190px;max-width:100%}
 <p class="lead">Explore different types of network, why organisations use networks, and the advantages, disadvantages and situations where each type makes sense.</p></header>
 <section class="instructions"><p><strong>Work one section at a time.</strong> Use the Check button at the end of each part.</p>
 <p>Correct answers lock in. Incorrect answers are not revealed — use <strong>Try again</strong> and keep working.</p></section>
+<p class="validation-note"><strong>Answer matching:</strong> capital letters do not matter. Common abbreviations, full names, alternative valid terms, spacing, punctuation and singular/plural forms are accepted.</p>
 <form id="quizForm" autocomplete="off">
 
 <section class="section"><div class="section-head"><p class="section-kicker">Part A</p><h2>LAN, WAN, PAN and cellular networks</h2><p class="section-desc">Recognise the main network types from everyday situations.</p></div>
-<div class="question text-q"><div class="qtop"><span class="num">1.</span><div class="prompt">A school connects computers, printers and servers within one site. What type of network is this?</div></div><div class="answer-row"><input data-answers="lan|local area network"></div><div class="feedback"></div></div>
-<div class="question text-q"><div class="qtop"><span class="num">2.</span><div class="prompt">A company links offices in Cardiff, Newport and London. What type of network is this?</div></div><div class="answer-row"><input data-answers="wan|wide area network"></div><div class="feedback"></div></div>
-<div class="question text-q"><div class="qtop"><span class="num">3.</span><div class="prompt">A smartwatch connects directly to a phone over Bluetooth. What type of small personal network is this?</div></div><div class="answer-row"><input data-answers="pan|personal area network"></div><div class="feedback"></div></div>
-<div class="question text-q"><div class="qtop"><span class="num">4.</span><div class="prompt">A phone accesses the internet while travelling using 4G or 5G. What type of network is being used?</div></div><div class="answer-row"><input data-answers="cellular network|cellular|mobile network|mobile data network"></div><div class="feedback"></div></div>
+<div class="question text-q"><div class="qtop"><span class="num">1.</span><div class="prompt">A school connects computers, printers and servers within one site. What type of network is this?</div></div><div class="answer-row"><input data-answers="lan|local area network|local-area network|local area networks|lans"></div><div class="feedback"></div></div>
+<div class="question text-q"><div class="qtop"><span class="num">2.</span><div class="prompt">A company links offices in Cardiff, Newport and London. What type of network is this?</div></div><div class="answer-row"><input data-answers="wan|wide area network|wide-area network|wide area networks|wans"></div><div class="feedback"></div></div>
+<div class="question text-q"><div class="qtop"><span class="num">3.</span><div class="prompt">A smartwatch connects directly to a phone over Bluetooth. What type of small personal network is this?</div></div><div class="answer-row"><input data-answers="pan|personal area network|personal-area network|personal area networks|pans"></div><div class="feedback"></div></div>
+<div class="question text-q"><div class="qtop"><span class="num">4.</span><div class="prompt">A phone accesses the internet while travelling using 4G or 5G. What type of network is being used?</div></div><div class="answer-row"><input data-answers="cellular network|cellular|mobile network|mobile data network|mobile network connection|mobile data|cell network|cellular networks|mobile networks|4g|5g|4g network|5g network"></div><div class="feedback"></div></div>
 <div class="question select-q" data-answer="lan"><div class="qtop"><span class="num">5.</span><div class="prompt">Which network type would normally cover the smallest fixed geographical area such as one classroom, office or building?</div></div><div class="answer-row"><select><option value="">Choose…</option><option value="lan">LAN</option><option value="wan">WAN</option><option value="cell">Cellular</option><option value="internet">Internet</option></select></div><div class="feedback"></div></div>
 <div class="question select-q" data-answer="wan"><div class="qtop"><span class="num">6.</span><div class="prompt">Which type is most appropriate for connecting several company sites across different cities?</div></div><div class="answer-row"><select><option value="">Choose…</option><option value="pan">PAN</option><option value="lan">LAN</option><option value="wan">WAN</option><option value="bluetooth">Bluetooth</option></select></div><div class="feedback"></div></div>
 <div class="question select-q" data-answer="cell"><div class="qtop"><span class="num">7.</span><div class="prompt">A delivery driver needs internet access while moving around a city. Which network type is the best fit?</div></div><div class="answer-row"><select><option value="">Choose…</option><option value="lan">LAN</option><option value="pan">PAN</option><option value="cell">Cellular network</option><option value="wan">A wired WAN connection to the van</option></select></div><div class="feedback"></div></div>
@@ -109,8 +110,39 @@ const form=document.getElementById('quizForm');
 const sections=[...document.querySelectorAll('.section')];
 const resetBtn=document.getElementById('resetBtn');
 
-function clean(v){return String(v).trim().toLowerCase().replace(/[.,!?;:]+$/g,'').replace(/\s+/g,' ')}
-function textCorrect(input){const learner=clean(input.value);return learner!==''&&input.dataset.answers.split('|').map(clean).includes(learner)}
+function clean(v){
+  return String(v)
+    .trim()
+    .toLowerCase()
+    .replace(/&/g,' and ')
+    .replace(/[_/\\\-–—]+/g,' ')
+    .replace(/[()[\]{}'",.?!;:]+/g,' ')
+    .replace(/\s+/g,' ')
+    .trim()
+    .replace(/^(a|an|the)\s+/,'');
+}
+
+function answerForms(v){
+  const base=clean(v);
+  const forms=new Set([base]);
+
+  if(base.endsWith('ies') && base.length>3) forms.add(base.slice(0,-3)+'y');
+  if(base.endsWith('es') && base.length>2) forms.add(base.slice(0,-2));
+  if(base.endsWith('s') && !base.endsWith('ss') && base.length>1) forms.add(base.slice(0,-1));
+
+  return forms;
+}
+
+function textCorrect(input){
+  const learnerForms=answerForms(input.value);
+  if([...learnerForms].every(x=>x==='')) return false;
+
+  const accepted=input.dataset.answers
+    .split('|')
+    .flatMap(answer=>[...answerForms(answer)]);
+
+  return accepted.some(answer=>learnerForms.has(answer));
+}
 function updateOrderNumbers(box){[...box.querySelectorAll('.order-item')].forEach((item,i)=>item.querySelector('.order-pos').textContent=i+1)}
 
 document.querySelectorAll('.order-box').forEach(box=>{
